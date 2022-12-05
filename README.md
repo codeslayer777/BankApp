@@ -1,2 +1,2 @@
-# BankApp
-Bankist application with HTML, CSS and JavaScript
+# Bankist-App
+Bamkist application with HTML, CSS and JavaScript
