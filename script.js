@@ -292,14 +292,16 @@ btnLoan.addEventListener('click', function (e) {
   const amount = Number(inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(() => {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    // Add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 2500);
   }
   inputLoanAmount.value = '';
 });
@@ -338,23 +340,22 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 // LECTURES
 
-// const future = new Date(2037, 10, 19, 15, 23);
-// console.log(Number(future));
+const ingredients = ['olives', 'spinach'];
 
-// const calcDaysPassed = (day1, day2) =>
-//   Math.abs(day2 - day1) / (1000 * 60 * 60 * 24);
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => {
+    console.log(`Here is your pizza with ${ing1} and ${ing2}`);
+  },
+  3000,
+  ...ingredients
+);
+console.log(`Waiting...`);
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
 
-// console.log(calcDaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24)));
-
-const num = 1884764.23;
-
-const options2 = {
-  style: 'unit',
-  unit: 'mile-per-hour',
-  currency: 'EUR',
-  // useGrouping: false,
-};
-
-console.log(new Intl.NumberFormat('en-US', options2).format(num));
-console.log(new Intl.NumberFormat('de-DE', options2).format(num));
-console.log(new Intl.NumberFormat('bg-BG', options2).format(num));
+setInterval(() => {
+  const now = new Date();
+  const hour = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+  console.log(`${hour}:${minutes}:${seconds}`);
+}, 1000);
